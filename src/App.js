@@ -71,8 +71,9 @@ function App() {
           greenMode={greenMode}
           alert={showAlert}
         />
-        <Alert alert={alert} />
-        <div className="container">
+        
+        <div className="container youo2">
+          <Alert alert={alert} />
           <Routes>
           <Route path="/" element={<TextForm Heading="Enter Text Here" mode={mode} darkMode = {darkMode} alert={showAlert} /> } />
             <Route path="/About" element={<About mode={mode} />} />

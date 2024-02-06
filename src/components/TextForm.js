@@ -3,16 +3,25 @@ import { useState } from "react";
 
 export default function TextForm(props) {
   const handleOnClick = () => {
+    if(text.length==0) {
+      props.alert('Error' , 'Text area Empty');
+      return;
+    }
     console.log(text.toUpperCase());
     setText(text.toUpperCase());
     props.alert('Success','Changed to uppercase');
     // setText("You Have Clicked on Handle Up click");
   };
   const handleOnChange = (e) => {
+
     // console.log("On Change");
     setText(e.target.value);
   };
   const handleOnLoClick = () => {
+    if(text.length==0) {
+      props.alert('Error' , 'Text area Empty');
+      return;
+    }
     setText(text.toLowerCase());
     props.alert('Success','Changed to lowercase');
   };
@@ -68,16 +77,17 @@ export default function TextForm(props) {
           Convert to Lower Case
         </button>
         {/* <button className="btn btn-primary mx-2 " onClick={toggleMode}>{btnText}</button> */}
-      </div>
-      <div className="container my-3 ">
+        <div className="container my-3 ">
         <h2>Your Text Summary</h2>
         <p>
-          Your Text contains:- {text.trim().split(" ").length} words and {text.length}{" "}
+          Your Text contains:- {text.split(/\s+/).filter((e)=>{return e.length!=0}).length} words and {text.length}{" "}
           characters
         </p>
         <h3>Preview</h3>
         {text}
       </div>
+      </div>
+      
     </>
   );
 }
